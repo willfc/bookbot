@@ -3,9 +3,7 @@ def main():
     text = get_book_text(book_path)
     word_count = word_count_in_text(text)
     characters_in_text = character_dict(text)
-    print(text)
-    print(f"There are {word_count} words in this text.")
-    print(f"This is the character count in this text: \n-----\n{characters_in_text}\n-----")
+    report(book_path, word_count, characters_in_text )
     
 def get_book_text(path):
     with open(path) as f:
@@ -26,4 +24,13 @@ def character_dict(text):
     
     return alphabet_dict
 
+def report (book_path, word_count, characters_in_text):
+    print(f"---- Begin report of {book_path} ----")
+    print(f"{word_count} words found in the text \n")
+
+    for char in characters_in_text:
+        if char.isalpha():
+            print(f"The {[char]} was found {characters_in_text[char]} times")
+
+    print("\n---- End Report ----")
 main()
